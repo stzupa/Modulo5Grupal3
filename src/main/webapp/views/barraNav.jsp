@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <div class="container">
 	<nav class="navbar navbar-expand-lg bg-light">
 		<div class="container-fluid">
@@ -18,9 +20,17 @@
 						href="${pageContext.request.contextPath}/crearCap">Crear Capacitación</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/listarCap">Listar Capacitaciones</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="${pageContext.request.contextPath}/login">Login</a></li>
-				</ul>
+						
+					<c:if test="${estado == activo}">
+						<li id="opcion" class="nav-item"><a class="nav-link" style="visibility: visible"
+							href="${pageContext.request.contextPath}/logout">Loguot</a></li>
+					</c:if>
+					<c:if test="${estado != activo}">
+						<li id="opcion" class="nav-item"><a class="nav-link" style="visibility: hidden"
+							href="${pageContext.request.contextPath}/logout">Logout</a></li>
+					</c:if>
+					
+				</ul>				
 			</div>
 		</div>
 	</nav>

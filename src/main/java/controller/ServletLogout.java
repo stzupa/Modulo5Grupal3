@@ -8,29 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/")
-public class ServletInicio extends HttpServlet {
+@WebServlet("/logout")
+public class ServletLogout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public ServletInicio() {
+
+    public ServletLogout() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		HttpSession sesion = request.getSession();
-		
-		if (sesion.getAttribute("usuario") != null) {
-			request.setAttribute("visible", "style='visibility: hidden'");
-		}else {
-			request.setAttribute("visible", "style='visibility: visible'");
-			request.setAttribute("estado", "noActivo");
-		}
-		
-		
-		getServletContext().getRequestDispatcher("/views/index.jsp").forward(request, response);
-		
-	}
+		sesion.invalidate();
+		getServletContext().getRequestDispatcher("/views/login.jsp").forward(request, response);	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);

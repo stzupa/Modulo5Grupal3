@@ -24,8 +24,7 @@ public class ServletContacto extends HttpServlet {
 			getServletContext().getRequestDispatcher("/views/login.jsp").forward(request, response);			
 		}else {
 			getServletContext().getRequestDispatcher("/views/contacto.jsp").forward(request, response);
-		}		
-		
+		}				
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

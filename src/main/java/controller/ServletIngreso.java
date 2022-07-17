@@ -24,11 +24,14 @@ public class ServletIngreso extends HttpServlet {
 				
 		String usuario = request.getParameter("usuario");
 		String pass = request.getParameter("pass");
+		//String estado = "activo";
 		
 		if (usuario.equals("admin") && pass.equals("1234")) {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("usuario", usuario);
+			//session.setAttribute("estado", estado);
 			request.setAttribute("usuario", session.getAttribute(usuario));
+			request.setAttribute("estado", "activo");
 			getServletContext().getRequestDispatcher("/views/contacto.jsp").forward(request, response);
 		}else {
 			getServletContext().getRequestDispatcher("/views/login.jsp").forward(request, response);
